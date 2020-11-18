@@ -12,6 +12,11 @@ sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar --version
  - [composer][1] 
 
 
+### Thanks
+
+File upload is done with [this tutorial][2].
+
+
 
 
 
@@ -20,3 +25,4 @@ sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar --version
 
 
 [1]: https://getcomposer.org/
+[2]: https://www.taniarascia.com/how-to-upload-files-to-a-server-with-plain-javascript-and-php/
