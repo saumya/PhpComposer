@@ -1,7 +1,7 @@
 console.log('Upload : App');
 
 // Define processing URL and form element
-const url = 'process.php';
+const url = 'upload_to_minstagram.php';
 const form = document.querySelector('form');
 // Listen for form submit
 form.addEventListener('submit', (e) => {
