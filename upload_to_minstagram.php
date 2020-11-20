@@ -6,7 +6,7 @@
 		if (isset($_FILES['files'])) {
 			$errors = [];
 			//$path = 'uploads/';
-			$path = 'minstagram/';
+			$path = 'minstagram_uploads/';
 			$extensions = ['jpg', 'jpeg', 'png', 'gif'];
 			$all_files = count($_FILES['files']['tmp_name']);
 

@@ -1,6 +1,6 @@
 <?php
 
-$dir = 'minstagram/';
+$dir = 'minstagram_uploads/';
 $files = scandir($dir, 0);
 
 $resultA = array();

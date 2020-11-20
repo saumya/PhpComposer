@@ -42,7 +42,7 @@ btnGet.addEventListener('click', (event)=>{
       //const img = '<img src="'+ +'">'
       let htmlStr = '';
       result.forEach(element => {
-        htmlStr += '<img src="minstagram/'+ element +'"></img>';
+        htmlStr += '<img src="minstagram_uploads/'+ element +'"></img>';
       });
       //console.log(htmlStr);
       const divPhotosDisplayContainer = document.getElementById('div_view');
