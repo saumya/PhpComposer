@@ -17,9 +17,18 @@ form.addEventListener('submit', (e) => {
   fetch ( url, {
     method: 'POST',
     body: formData
-  }).then((response) => {
-    console.log(response);
-  });
+  }).then( response => {
+    //console.log('response');
+    //console.log(response);
+    // JSON.stringify(
+    //document.getElementById('id_result').innerHTML = 'Upload Success.';
+    //console.log ( JSON.stringify( response ) );
+    response.text().then( result => {
+      //console.log('result');
+      //console.log(result);
+      document.getElementById('id_result').innerHTML = 'Upload Success.';
+    }).catch(error2=>console.log(error2));
+  } ).catch( error1 => console.log(error1) );
   //
   console.log('Submit : action button', new Date());
 });
