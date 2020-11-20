@@ -12,9 +12,14 @@
 <body>
 
 	<form method="post" enctype="multipart/form-data">
-  	<input type="file" name="files[]" multiple />
-  	<input type="submit" value="Upload File" name="submit" />
+  		<input type="file" name="files[]" multiple />
+  		<input type="submit" value="Upload File" name="submit" />
 	</form>
+
+	<button type="button" id="id_btn_getAll"> Get All </button>
+	<div id="div_view">
+		
+	</div>
 
 	<script src="js/upload.js"></script>
 </body>
