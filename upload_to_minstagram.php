@@ -9,6 +9,9 @@
 			$path = 'minstagram_uploads/';
 			$extensions = ['jpg', 'jpeg', 'png', 'gif'];
 			$all_files = count($_FILES['files']['tmp_name']);
+			//
+			//$result = false;
+			$aResult = array();
 
 			for ($i = 0; $i < $all_files; $i++) {
 				$file_name = $_FILES['files']['name'][$i];
@@ -23,13 +26,22 @@
 					$errors[] = 'Extension not allowed: ' . $file_name . ' ' . $file_type;
 				}// if
 				if ($file_size > 2097152) {
-        	$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
-        }// if
-        if (empty($errors)) {
-        	move_uploaded_file($file_tmp, $file);
-        }// if
+        			$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
+        		}// if
+				if (empty($errors)) {
+					$result = move_uploaded_file($file_tmp, $file);
+					array_push( $aResult, $result);
+				}// if
 
 			}// for
+
+			//
+			$resultJSON = json_encode($aResult);
+			echo $resultJSON;
+			//print_r( $resultJSON );
+			//print_r( $aResult );
+
+			//return $resultJSON;
 
 			if ($errors) print_r($errors);
 
