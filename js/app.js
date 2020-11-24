@@ -1,7 +1,10 @@
 //
 console.log('App : version 0.1.0');
 
-const app = function(){
+// Self-Executing Function
+(()=>{
+
+  console.log('App : Entry');
 
   // Getting the images
   const getDataFromServer = ()=>{
@@ -35,6 +38,4 @@ const app = function(){
   // Auto load the data when the page has been loaded.
   getDataFromServer()
 
-};// app
-//
-app();
+})();// Self-Executing Function
