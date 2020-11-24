@@ -10,7 +10,10 @@ for($i = 0; $i < count($files); $i++){
     // removing '.' and '..' entries in the files
     if( strcmp ( '.' , $file ) !== 0 ){
         if( strcmp( '..', $file ) !== 0 ){
-            array_push($resultA, $file);
+            // Only for macOS
+            if( strcmp( '.DS_Store', $file ) !== 0 ){
+                array_push($resultA, $file);
+            }
         }
     }
 }

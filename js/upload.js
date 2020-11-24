@@ -30,13 +30,22 @@ console.log('Upload : Version 1.0.0');
       response.text().then( result => {
         //console.log('result');
         //debugger;
+        
         console.log('result', result);
         const a1 = result.substr(1,result.length);
         const a2 = a1.substr(0,result.length-2);
         const a3 = a2.split(',');
         const numFiles = a3.length;
 
-        document.getElementById('id_result').innerHTML = `Upload Success. Total ${a3.length} files uploaded. `;
+        const isResultTrue = a3.every(function(item){ return( item==='true' ) });
+
+        let sResult = 'Upload Error! Some files did not get uploaded.';
+        if(isResultTrue){
+          sResult = `Upload Success. Total ${a3.length} files uploaded. `;
+        }
+        document.getElementById('id_result').innerHTML = sResult;
+
+        
       }).catch(error2=>console.log(error2));
       
       //
