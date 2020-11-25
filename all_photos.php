@@ -1,5 +1,8 @@
 <?php
 
+require_once('view.photos.php');
+
+/*
 $dir = 'minstagram_uploads/';
 $files = scandir($dir, 0);
 
@@ -22,4 +25,7 @@ $resultJSON = json_encode($resultA);
 
 echo $resultJSON;
 //echo $root = $_SERVER['DOCUMENT_ROOT'];
+*/
 
+$viewPhotos = new ViewPhotos();
+$viewPhotos->getAllPhotosString();
