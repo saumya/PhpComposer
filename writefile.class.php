@@ -30,8 +30,19 @@ class WriteFile {
         
         $jsonString = '';
         $jString = '';
-        foreach( $this->dataToWrite as $fileObj ){
-            $jString .= '{"file":"' . $fileObj . '"},';
+        $count = 0;
+        //echo '<br>Total='.count($this->dataToWrite).'total';
+        foreach( $this->dataToWrite as $key=>$fileObj ){
+            $count++;
+            //echo '<br> Count-'.$count;
+            //echo '<br>' . $key . '--';
+            //$jString .= '{"file":"' . $fileObj . '"},';
+            if( count($this->dataToWrite) == $count ){
+                //echo '<br>------------ END -------------- LOOP';
+                $jString .= '{"file":"' . $fileObj . '"}';
+            }else{
+                $jString .= '{"file":"' . $fileObj . '"},';
+            }
         }
         $jsonString = '[' . $jString . ']' ;
 
@@ -39,8 +50,8 @@ class WriteFile {
         //fwrite( $Handle, $jString );
         //fwrite( $Handle, ']' );
 
-        echo '<br>';
-        echo $jsonString;
+        //echo '<br>';
+        //echo $jsonString;
 
         fwrite( $Handle, $jsonString );
 

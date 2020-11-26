@@ -44,6 +44,7 @@
     fclose($Handle); 
     */
 
+    //Writing to a JSON file
     $writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
     $writeFileObj->writeToFile();
 
