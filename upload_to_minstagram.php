@@ -1,5 +1,8 @@
 <?php 
 	
+	require_once('view.photos.php');
+	require_once('writefile.class.php');
+	
 	//print_r($_FILES);
 
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,9 +44,16 @@
 			//print_r( $resultJSON );
 			//print_r( $aResult );
 
+			$viewPhotos = new ViewPhotos();
+			//Writing to a JSON file
+			$writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
+			$writeFileObj->writeToFile();
+
 			//return $resultJSON;
 
 			if ($errors) print_r($errors);
 
 		}// if
 	} // if
+
+	?>

@@ -1,7 +1,7 @@
 <?php
 
     require_once('view.photos.php');
-    require_once('writefile.class.php');
+    //require_once('writefile.class.php');
 
     /*
     $dir = 'minstagram_uploads/';
@@ -44,8 +44,10 @@
     fclose($Handle); 
     */
 
+    /*
     //Writing to a JSON file
     $writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
     $writeFileObj->writeToFile();
+    */
 
 ?>
