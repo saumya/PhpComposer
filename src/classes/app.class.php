@@ -1,15 +1,16 @@
 <?php
+namespace MyProject;
 
 class Application {
     public function __construct(){
-        echo 'App.class.php : Application : Construct <br>';
+        echo 'App.class : Application : Construct <br>';
     }
     public function __destruct(){
-        echo 'App.class.php : Application : Destruct <br>';
+        echo 'App.class : Application : Destruct <br>';
     }
 
     public function info(){
-        echo 'App.class.php : Application : Application Entry <br>';
+        echo 'App.class : Application : Application Entry <br>';
     }
 }
 

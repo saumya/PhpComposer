@@ -1,5 +1,7 @@
 <?php
     //
+    namespace minstagram;
+    
     class Photo {
         public function __construct(){
             echo 'photo.class : Photo : Construct <br>';
