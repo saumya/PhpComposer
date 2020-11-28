@@ -2,10 +2,10 @@
 
 class Application {
     public function __construct(){
-        echo 'App.class.php : Application : Constructor <br>';
+        echo 'App.class.php : Application : Construct <br>';
     }
     public function __destruct(){
-        echo 'App.class.php : Application : Destructor <br>';
+        echo 'App.class.php : Application : Destruct <br>';
     }
 
     public function info(){
