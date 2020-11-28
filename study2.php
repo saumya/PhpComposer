@@ -1,9 +1,11 @@
 <?php
 // Composer Autoload
-//echo 'dir ='.__DIR__.'<br>';
-echo realpath('vendor/autoload.php');
 
-require_once realpath('vendor/autoload.php');
+//echo 'dir ='.__DIR__.'<br>';
+//echo realpath('vendor/autoload.php');
+
+//require_once realpath('vendor/autoload.php');
+require_once ('vendor/autoload.php');
 
 echo '<br> --- <br>';
 
