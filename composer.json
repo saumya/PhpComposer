@@ -1,0 +1,16 @@
+{
+    "name": "saumya/4_app_composer",
+    "authors": [
+        {
+            "name": "saumya",
+            "email": "2saumyaray@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": { 
+            "ray\\" : "src/classes/ray",
+            "minstagram\\" : "src/classes/minstagram" 
+        }
+    },
+    "require": {}
+}

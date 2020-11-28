@@ -1,5 +1,5 @@
 <?php
-    //
+    // Manual Autoload
     // autoload
     
     spl_autoload_register(function($className){
@@ -38,11 +38,11 @@
     
     //include('src/classes/minstagram/Photo.php');
     
-    $photo = new minstagram\Photo();
+    $photo = new \minstagram\Photo();
     //$photo = new Photo();
     $photo->info();
     
-    $photolist = new minstagram\PhotoList();
+    $photolist = new \minstagram\PhotoList();
     $photolist->info();
     
     echo 'Study1 : End <br>';
