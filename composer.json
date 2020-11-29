@@ -12,5 +12,7 @@
             "minstagram\\" : "src/classes/minstagram" 
         }
     },
-    "require": {}
+    "require": {
+        "monolog/monolog": "^2.1"
+    }
 }

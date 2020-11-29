@@ -7,6 +7,13 @@ The `composer` is a PHP executable. All that is needed is a PHP executable to ru
 sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar --version
 ```
 
+Installing Thirdparty modules
+
+```
+sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar require monolog/monolog
+```
+
+
 ### Done with
 
  - [composer][1] 
