@@ -19,7 +19,11 @@ echo '<br> --- <br>';
 $filename = __DIR__.'/my_monolog.log';
 
 $logger = new Monolog\Logger('minstagram_logger');
-$streamHandler = new Monolog\Handler\StreamHandler( __DIR__.'/my_monolog.log', Logger::DEBUG);
+// breaks here
+//$streamHandler = new Monolog\Handler\StreamHandler( __DIR__.'/my_monolog.log', Logger::DEBUG);
+//$logger->pushHandler(new StreamHandler('php://stdout', Logger::WARNING));
+$logger->warning('Foo');
+$logger->error('Bar');
 $logger->debug('Logger started.');
 
 
