@@ -17,7 +17,11 @@ echo '<br>';
 
 echo '<br> ---------------- Current Folder Options ---------------- ';
 echo '<br> basename( __DIR__ ) =' . basename(__DIR__) . '';
+echo '<br> basename( __FILE__ ) =' . basename(__FILE__) . '';
+
+echo '<br> __FILE__ =' . __FILE__ . '';
 echo '<br> __DIR__ =' . __DIR__ . '';
+
 echo '<br> getcwd() =' . getcwd() . '';
 echo '<br> dirname( __FILE__ ) =' . dirname(__FILE__) . '';
 echo '<br> ---------------- Current Folder Options ---------------- ';
@@ -28,7 +32,7 @@ $filename = __DIR__.'/my_monolog.log';
 $logger = new Monolog\Logger('minstagram_logger');
 // breaks here
 //$streamHandler = new Monolog\Handler\StreamHandler( __DIR__.'/my_monolog.log', Logger::DEBUG);
-//$logger->pushHandler(new StreamHandler('php://stdout', Logger::WARNING));
+//$streamHandler = new Monolog\Handler\StreamHandler( getcwd().'/my_monolog.log', Logger::DEBUG);
 $logger->warning('Foo');
 $logger->error('Bar');
 $logger->debug('Logger started.');
