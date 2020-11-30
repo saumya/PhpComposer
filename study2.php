@@ -13,7 +13,14 @@ echo '<br>' . Monolog\Logger::class . '';
 echo '<br>' . Monolog\Handler\StreamHandler::class . '';
 echo '<br>' . Monolog\Handler\FirePHPHandler::class . '';
 echo '<br>';
-echo '<br>'.__DIR__.'/my_monolog.log'.'<br>';
+//echo '<br> __DIR__=' . __DIR__ . '/my_monolog.log' . '<br>';
+
+echo '<br> ---------------- Current Folder Options ---------------- ';
+echo '<br> basename( __DIR__ ) =' . basename(__DIR__) . '';
+echo '<br> __DIR__ =' . __DIR__ . '';
+echo '<br> getcwd() =' . getcwd() . '';
+echo '<br> dirname( __FILE__ ) =' . dirname(__FILE__) . '';
+echo '<br> ---------------- Current Folder Options ---------------- ';
 echo '<br> --- <br>';
 
 $filename = __DIR__.'/my_monolog.log';
