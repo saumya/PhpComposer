@@ -28,6 +28,7 @@ echo '<br> ---------------- Current Folder Options ---------------- <br>';
 
 //$log_file_name = getcwd().'/my_monolog.log';
 $log_file_name = 'my_monolog.log';
+//$log_file_name = __DIR__.'/my_monolog.log';
 echo $log_file_name.'<br>';
 
 // is file exists ?
@@ -47,15 +48,10 @@ echo 'File Permission=' . substr(sprintf('%o', fileperms( $log_file_name )), -4)
 
 echo '<br> --- <br>';
 
-$filename = __DIR__.'/my_monolog.log';
+// Logger
+$streamHandler = new Monolog\Handler\StreamHandler( $log_file_name, Monolog\Logger::DEBUG);
 
 $logger = new Monolog\Logger('minstagram_logger');
-// breaks here
-//$streamHandler = new Monolog\Handler\StreamHandler( __DIR__.'/my_monolog.log', Logger::DEBUG);
-//$streamHandler = new Monolog\Handler\StreamHandler( getcwd().'/my_monolog.log', Logger::DEBUG);
-
-$streamHandler = new Monolog\Handler\StreamHandler( $filename, Monolog\Logger::DEBUG);
-
 $logger->pushHandler( $streamHandler );
 
 $logger->info('My logger is now ready');
@@ -63,23 +59,8 @@ $logger->warning('Foo');
 $logger->error('Bar');
 $logger->debug('Logger started.');
 
+// Logger /
 
-//$logger->pushHandler(new Monolog\Handler\StreamHandler(__DIR__.'/my_monolog.log', Logger::DEBUG));
-//$logger->pushHandler(new Monolog\Handler\FirePHPHandler());
-//$logger->info('My logger is now ready');
-//echo Monolog\Logger::DEBUG . '<br>';
-
-//$logger->pushHandler(new Monolog\Handler\StreamHandler(__DIR__.'/my_monolog.log', Logger::DEBUG));
-//$logger->info('Adding a new user', ['username' => 'Seldaek']);
-
-/*
-// Monolog
-$log = new Monolog\Logger('name');
-$log->pushHandler(new Monolog\Handler\StreamHandler('my_monolog.log', Logger::WARNING));
-// add records to the log
-$log->warning('Foo');
-$log->error('Bar');
-*/
 
 $RayObj = new \ray\Ray();
 
