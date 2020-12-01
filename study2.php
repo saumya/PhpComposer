@@ -24,7 +24,27 @@ echo '<br> __DIR__ =' . __DIR__ . '';
 
 echo '<br> getcwd() =' . getcwd() . '';
 echo '<br> dirname( __FILE__ ) =' . dirname(__FILE__) . '';
-echo '<br> ---------------- Current Folder Options ---------------- ';
+echo '<br> ---------------- Current Folder Options ---------------- <br>';
+
+//$log_file_name = getcwd().'/my_monolog.log';
+$log_file_name = 'my_monolog.log';
+echo $log_file_name.'<br>';
+
+// is file exists ?
+if (file_exists($log_file_name)) {
+    echo 'File exists. <br>';
+} else {
+    echo "File not exists. XX <br>";
+}
+// is file writable ?
+if (is_writable($log_file_name)) {
+    echo 'Writable. <br>';
+} else {
+    echo 'Not writable. <br>';
+}
+
+echo 'File Permission=' . substr(sprintf('%o', fileperms( $log_file_name )), -4);
+
 echo '<br> --- <br>';
 
 $filename = __DIR__.'/my_monolog.log';
@@ -33,6 +53,12 @@ $logger = new Monolog\Logger('minstagram_logger');
 // breaks here
 //$streamHandler = new Monolog\Handler\StreamHandler( __DIR__.'/my_monolog.log', Logger::DEBUG);
 //$streamHandler = new Monolog\Handler\StreamHandler( getcwd().'/my_monolog.log', Logger::DEBUG);
+
+$streamHandler = new Monolog\Handler\StreamHandler( $filename, Monolog\Logger::DEBUG);
+
+$logger->pushHandler( $streamHandler );
+
+$logger->info('My logger is now ready');
 $logger->warning('Foo');
 $logger->error('Bar');
 $logger->debug('Logger started.');
