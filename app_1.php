@@ -18,3 +18,10 @@ new Photo();
 new PhotoList();
 echo '<br> ---------------------- <br>';
 new Person();
+
+
+
+
+
+
+echo '<br> ---------------------- <br>END';
