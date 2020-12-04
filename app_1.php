@@ -19,10 +19,10 @@ new Photo();
 new PhotoList();
 echo '<br> ---------------------- <br>';
 new Person();
-new TestSQLite();
+$testSQLite = new TestSQLite();
+$testSQLite->connect();
 
 
 
 
-
-echo '<br> ---------------------- <br>END';
+echo '<br> ---------------------- END<br>';
