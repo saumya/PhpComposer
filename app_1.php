@@ -9,6 +9,7 @@ use minstagram\Photo;
 use minstagram\PhotoList;
 
 use ray\utils\Person;
+use ray\utils\TestSQLite;
 
 
 new Ray();
@@ -18,7 +19,7 @@ new Photo();
 new PhotoList();
 echo '<br> ---------------------- <br>';
 new Person();
-
+new TestSQLite();
 
 
 
