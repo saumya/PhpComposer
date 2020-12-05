@@ -20,7 +20,9 @@ new PhotoList();
 echo '<br> ---------------------- <br>';
 new Person();
 $testSQLite = new TestSQLite();
-$testSQLite->connect();
+//$testSQLite->connect();
+$testSQLite->connect_and_initialise_tables();
+
 
 
 
