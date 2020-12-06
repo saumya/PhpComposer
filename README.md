@@ -11,19 +11,12 @@ Installing Thirdparty modules
 
 ```
 sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar require monolog/monolog
-```
-
-### TODO
- 
- - Check for the options
-  - SQLite 
-  - GraphQL
- - ORM also seems to be an option
- 
+``` 
 
 ### Done with
 
  - [composer][1] 
+ - SQLite is tested
 
 
 ### Thanks
