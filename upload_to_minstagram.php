@@ -40,10 +40,11 @@
 
 			//
 			$resultJSON = json_encode($aResult);
-			echo $resultJSON;
+			//echo $resultJSON;
+			writeTheResult($resultJSON);
 			//print_r( $resultJSON );
 			//print_r( $aResult );
-
+			
 			$viewPhotos = new ViewPhotos();
 			//Writing to a JSON file
 			$writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
@@ -56,4 +57,8 @@
 		}// if
 	} // if
 
-	?>
+	function writeTheResult($resultString){
+		echo $resultString;
+	}
+
+?>
