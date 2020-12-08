@@ -2,9 +2,28 @@
 	
 	require_once('view.photos.php');
 	require_once('writefile.class.php');
+
+	require_once ('vendor/autoload.php');
+
+	use Monolog\Logger;
+	use Monolog\Handler\StreamHandler;
+
+
 	
 	//print_r($_FILES);
 
+	$log_file_name = 'my_monolog.log';
+	
+	$streamHandler = new StreamHandler( $log_file_name, Logger::DEBUG);
+	$logger = new Logger('MINSTAGRAM_LOGGER');
+	$logger->pushHandler( $streamHandler );
+	/*
+	$logger->info('upload to minstagram');
+	$logger->warning('upload to Minstagram');
+	$logger->error('upload to Minstagram');
+	*/
+
+	//
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if (isset($_FILES['files'])) {
 			$errors = [];
@@ -40,8 +59,16 @@
 
 			//
 			$resultJSON = json_encode($aResult);
+			//
+			// This is needed for the Front-End Application
 			//echo $resultJSON;
-			writeTheResult($resultJSON);
+			writeTheResult($resultJSON); 
+			// Unless we write something back, the Frontend application can not know
+			// the return type from the server.
+			// Frontend is waiting for a return from the fetch() call, that did trigger this file
+			//
+
+
 			//print_r( $resultJSON );
 			//print_r( $aResult );
 			
