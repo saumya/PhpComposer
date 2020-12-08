@@ -79,36 +79,29 @@
 
 			}// for
 
-			//
-			//$resultJSON = json_encode($aResult);
-			//
-			// This is needed for the Front-End Application
-			//echo $resultJSON;
-			writeTheResult($aResult); 
-			// Unless we write something back, the Frontend application can not know
-			// the return type from the server.
-			// Frontend is waiting for a return from the fetch() call, that did trigger this file
-			//
-
-
-			//print_r( $resultJSON );
-			//print_r( $aResult );
-			
-			$viewPhotos = new ViewPhotos();
-			//Writing to a JSON file
-			$writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
-			$writeFileObj->writeToFile();
-
-			//return $resultJSON;
+			writeTheResultForFrontEnd($aResult); 
+			write_json_file();
 
 			if ($errors) print_r($errors);
 
 		}// if
 	} // if
 
-	function writeTheResult($aResult){
+	function writeTheResultForFrontEnd($aResult){
+		// This is needed for the Front-End Application
+		// Unless we write something back, the Frontend application can not know
+		// the return type from the server.
+		// Frontend is waiting for a return from the fetch() call, that did trigger this file
+		//
 		$resultJSON = json_encode($aResult);
 		echo $resultJSON;
+	}
+
+	function write_json_file(){
+		$viewPhotos = new ViewPhotos();
+		//Writing to a JSON file
+		$writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
+		$writeFileObj->writeToFile();
 	}
 
 ?>
