@@ -69,6 +69,10 @@
         			$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
         		}// if
 				if (empty($errors)) {
+					
+					$logger->info( $file_tmp );
+					$logger->info( $file );
+
 					$result = move_uploaded_file($file_tmp, $file);
 					array_push( $aResult, $result);
 				}// if
@@ -76,11 +80,11 @@
 			}// for
 
 			//
-			$resultJSON = json_encode($aResult);
+			//$resultJSON = json_encode($aResult);
 			//
 			// This is needed for the Front-End Application
 			//echo $resultJSON;
-			writeTheResult($resultJSON); 
+			writeTheResult($aResult); 
 			// Unless we write something back, the Frontend application can not know
 			// the return type from the server.
 			// Frontend is waiting for a return from the fetch() call, that did trigger this file
@@ -102,8 +106,9 @@
 		}// if
 	} // if
 
-	function writeTheResult($resultString){
-		echo $resultString;
+	function writeTheResult($aResult){
+		$resultJSON = json_encode($aResult);
+		echo $resultJSON;
 	}
 
 ?>
