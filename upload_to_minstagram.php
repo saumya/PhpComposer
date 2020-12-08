@@ -9,20 +9,25 @@
 	use Monolog\Handler\StreamHandler;
 	use Monolog\Formatter\LineFormatter;
 
+	// Setting the Server Time Zone
+	date_default_timezone_set('Asia/Kolkata');
+
 
 	
 	//print_r($_FILES);
 
 	$log_file_name = 'my_monolog.log';
-
+	
+	
 	// Formatting the Logger
 	// the default date format is "Y-m-d\TH:i:sP"
-	$dateFormat = "Y n j, g:i a";
+	$dateFormat = "Y n j, g:i:s a";
 	// the default output format is "[%datetime%] %channel%.%level_name%: %message% %context% %extra%\n"
 	$output = "%datetime% > %level_name% > %message% %context% %extra%\n";
 	// finally, create a formatter
 	$formatter = new LineFormatter($output, $dateFormat);
-		
+	
+
 	$streamHandler = new StreamHandler( $log_file_name, Logger::DEBUG);
 	$streamHandler->setFormatter($formatter);
 
