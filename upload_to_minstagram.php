@@ -79,7 +79,7 @@
 					$result = move_uploaded_file($file_tmp, $file);
 					array_push( $aResult, $result);
 					// write to DB
-					write_to_db($file_tmp);
+					write_to_db( $logger, $file_tmp );
 				}// if
 
 			}// for
@@ -109,8 +109,8 @@
 		$writeFileObj->writeToFile();
 	}
 
-	function write_to_db($file){
-		$db_service = new DBService( $file );
+	function write_to_db($logger, $file){
+		$db_service = new DBService( $logger, $file );
 		$db_service->savePhoto();
 	}
 

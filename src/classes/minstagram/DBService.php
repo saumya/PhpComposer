@@ -5,12 +5,15 @@ namespace minstagram;
 class DBService
 {
     const PATH_TO_SQLITE_FILE = 'phpsqlite.db';
+
+    private $logger;
     private $pdo;
     private $file_data;
 
-    public function __construct( $file_data_to_store )
+    public function __construct( $logger, $file_data_to_store )
     {
         echo '<br> DBService : Construct <br>';
+        $this->logger = $logger;
         $this->file_data = $file_data_to_store;
         $this->init();
     }
@@ -19,6 +22,8 @@ class DBService
     public function init()
     {
         echo '<br> DBService : init <br>';
+        $this->logger->info('DBService : init');
+
         $this->connect();
         $this->createTable( $this->pdo );
     }
@@ -26,11 +31,15 @@ class DBService
     public function savePhoto()
     {
         echo '<br> DBService : savePhoto <br>';
+        $this->logger->info('DBService : savePhoto');
+        $this->logger->info( $this->file_data );
         //return $this->file_data;
         $photo_data = $this->file_data;
         $sql = "INSERT INTO minstagram(photo)" . "VALUES(:photo_data)";
 
         $stmt = $this->pdo->prepare($sql);
+        $stmt->bindParam(':photo_data', $photo_data);
+        
         $stmt->execute();
     }
     
