@@ -13,6 +13,16 @@ Installing Thirdparty modules
 sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar require monolog/monolog
 ``` 
 
+### Must
+
+Run this
+```
+sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar dump-autoload
+```
+
+This is the final step to re-generate the Autoload scripts correctly.
+
+
 ### Done with
 
  - [composer][1] 
