@@ -12,7 +12,8 @@ class DBService
 
     public function __construct( $logger, $file_data_to_store )
     {
-        echo '<br> DBService : Construct <br>';
+        //echo '<br> DBService : Construct <br>';
+        $logger->info('DBService : Construct');
         $this->logger = $logger;
         $this->file_data = $file_data_to_store;
         $this->init();
@@ -21,7 +22,7 @@ class DBService
     
     public function init()
     {
-        echo '<br> DBService : init <br>';
+        //echo '<br> DBService : init <br>';
         $this->logger->info('DBService : init');
 
         $this->connect();
@@ -30,21 +31,22 @@ class DBService
 
     public function savePhoto()
     {
-        echo '<br> DBService : savePhoto <br>';
+        //echo '<br> DBService : savePhoto <br>';
         $this->logger->info('DBService : savePhoto');
-        $this->logger->info( $this->file_data );
+        //$this->logger->info( $this->file_data );
         //return $this->file_data;
         $photo_data = $this->file_data;
         $sql = "INSERT INTO minstagram(photo)" . "VALUES(:photo_data)";
 
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindParam(':photo_data', $photo_data);
-        
+
         $stmt->execute();
     }
     
     private function connect()
     {
+        $this->logger->info('DBService : connect');
         if($this->pdo == null){
             $this->pdo = new \PDO( "sqlite:" . DBService::PATH_TO_SQLITE_FILE );
         }
@@ -52,7 +54,8 @@ class DBService
     }
     private function createTable($db)
     {   
-        echo 'DBService : createTable <br>';
+        $this->logger->info('DBService : createTable');
+        //echo 'DBService : createTable <br>';
         // Wrap your code in a try statement and catch PDOException
         try {    
             // ...SQLite stuff...
@@ -72,6 +75,7 @@ class DBService
 
     public function __destruct()
     {
-        echo '<br> DBService : Destruct <br>';
+        $this->logger->info('DBService : Destruct');
+        //echo '<br> DBService : Destruct <br>';
     }
 }
