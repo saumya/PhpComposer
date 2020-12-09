@@ -10,12 +10,12 @@ class DBService
     private $pdo;
     private $file_data;
 
-    public function __construct( $logger, $file_data_to_store )
+    public function __construct( $logger )
     {
         //echo '<br> DBService : Construct <br>';
         $logger->info('DBService : Construct');
         $this->logger = $logger;
-        $this->file_data = $file_data_to_store;
+        //$this->file_data = $file_data_to_store;
         $this->init();
     }
 
@@ -29,19 +29,34 @@ class DBService
         $this->createTable( $this->pdo );
     }
 
-    public function savePhoto()
+    public function savePhoto( $f_name, $file_data_to_store)
     {
         //echo '<br> DBService : savePhoto <br>';
         $this->logger->info('DBService : savePhoto');
-        //$this->logger->info( $this->file_data );
+        //$this->logger->info( $file_data_to_store );
+        /*
+        if (!file_exists($file_data_to_store))
+        {
+            $this->logger->info( "DBService : File not found." );
+            //throw new \Exception("File %s not found.");
+        }
+        */
+        
+        //$this->file_data = $file_data_to_store;
+
         //return $this->file_data;
-        $photo_data = $this->file_data;
-        $sql = "INSERT INTO minstagram(photo)" . "VALUES(:photo_data)";
+        //$photo_data = $this->file_data;
+        //$pathToFile = $file_data_to_store;
+        //$fh = fopen($pathToFile, 'rb');
+        
+        $sql = "INSERT INTO minstagram(photo_name, photo)" . "VALUES(:p_name, :p_data)";
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(':photo_data', $photo_data);
-
+        $stmt->bindParam(':p_name', $f_name);
+        $stmt->bindParam(':p_data', $file_data_to_store, \PDO::PARAM_LOB);
+        
         $stmt->execute();
+        //fclose($fh);
     }
     
     private function connect()
@@ -65,7 +80,7 @@ class DBService
                     id INTEGER PRIMARY KEY, 
                     title TEXT,
                     photo BLOB, 
-                    value TEXT)"
+                    photo_name TEXT)"
                 );
         } catch(PDOException $e) {
             echo $e->getMessage();

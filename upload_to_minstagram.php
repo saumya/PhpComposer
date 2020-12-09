@@ -44,6 +44,8 @@
 
 	$logger->info('upload to minstagram');
 
+	$db_service = new DBService( $logger );
+
 	//
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if (isset($_FILES['files'])) {
@@ -72,14 +74,11 @@
         			$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
         		}// if
 				if (empty($errors)) {
-					
-					$logger->info( $file_tmp );
-					$logger->info( $file );
-
+					// write to DB
+					$db_service->savePhoto( $file_name, file_get_contents( $file_tmp ) );
+					// Move the file to desired location
 					$result = move_uploaded_file($file_tmp, $file);
 					array_push( $aResult, $result);
-					// write to DB
-					write_to_db( $logger, $file_tmp );
 				}// if
 
 			}// for
@@ -107,11 +106,6 @@
 		//Writing to a JSON file
 		$writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
 		$writeFileObj->writeToFile();
-	}
-
-	function write_to_db($logger, $file){
-		$db_service = new DBService( $logger, $file );
-		$db_service->savePhoto();
 	}
 
 ?>
