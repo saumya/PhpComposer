@@ -15,7 +15,6 @@ class DBService
         //echo '<br> DBService : Construct <br>';
         $logger->info('DBService : Construct');
         $this->logger = $logger;
-        //$this->file_data = $file_data_to_store;
         $this->init();
     }
 
@@ -33,21 +32,6 @@ class DBService
     {
         //echo '<br> DBService : savePhoto <br>';
         $this->logger->info('DBService : savePhoto');
-        //$this->logger->info( $file_data_to_store );
-        /*
-        if (!file_exists($file_data_to_store))
-        {
-            $this->logger->info( "DBService : File not found." );
-            //throw new \Exception("File %s not found.");
-        }
-        */
-        
-        //$this->file_data = $file_data_to_store;
-
-        //return $this->file_data;
-        //$photo_data = $this->file_data;
-        //$pathToFile = $file_data_to_store;
-        //$fh = fopen($pathToFile, 'rb');
         
         $sql = "INSERT INTO minstagram(photo_name, photo)" . "VALUES(:p_name, :p_data)";
 
@@ -56,7 +40,6 @@ class DBService
         $stmt->bindParam(':p_data', $file_data_to_store, \PDO::PARAM_LOB);
         
         $stmt->execute();
-        //fclose($fh);
     }
     
     private function connect()

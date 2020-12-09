@@ -36,11 +36,7 @@
 
 	$logger = new Logger('MINSTAGRAM_LOGGER');
 	$logger->pushHandler( $streamHandler );
-	/*
-	$logger->info('upload to minstagram');
-	$logger->warning('upload to Minstagram');
-	$logger->error('upload to Minstagram');
-	*/
+	
 
 	$logger->info('upload to minstagram');
 
