@@ -1,5 +1,7 @@
 <?php 
-	
+	// Setting the Server Time Zone
+	date_default_timezone_set('Asia/Kolkata');
+
 	require_once('view.photos.php');
 	require_once('writefile.class.php');
 
@@ -9,8 +11,9 @@
 	use Monolog\Handler\StreamHandler;
 	use Monolog\Formatter\LineFormatter;
 
-	// Setting the Server Time Zone
-	date_default_timezone_set('Asia/Kolkata');
+	use minstagram\DBService;
+
+
 
 
 	
@@ -75,6 +78,8 @@
 
 					$result = move_uploaded_file($file_tmp, $file);
 					array_push( $aResult, $result);
+					// write to DB
+					write_to_db($file_tmp);
 				}// if
 
 			}// for
@@ -102,6 +107,11 @@
 		//Writing to a JSON file
 		$writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
 		$writeFileObj->writeToFile();
+	}
+
+	function write_to_db($file){
+		$db_service = new DBService( $file );
+		$db_service->savePhoto();
 	}
 
 ?>
