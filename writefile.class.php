@@ -54,7 +54,25 @@ class WriteFile {
                 echo $k . '=' . $itemDetails . '<br>'; 
             }
             */
-            echo filesize( $value ) . '<br>';
+            echo '------------------------------ <br>';
+            //echo __DIR__ . '/' . $value .'<br>';
+            //echo __DIR__ . '<br>';
+            //echo $value .'<br>';
+            //$file_path = __DIR__ . '/' . $this->photo_dir . $value;
+            $file_path = $this->photo_dir . $value;
+            //echo $file_path . '<br>';
+
+            //echo '<br>';
+
+            //echo 'size:' . filesize( __DIR__. '/' .$value ) . '<br>';
+
+            if( file_exists( $file_path ) )
+            {
+                echo 'Exist-' . ( $file_path ) . '<br>';
+                echo 'File Size-' . filesize( $file_path ) / 1000 . 'kb <br>';
+            }else{
+                echo 'XXX -' . $value . '<br>';
+            }
             
         }
         
