@@ -5,6 +5,7 @@ require_once ('vendor/autoload.php');
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
+include_once('writefile.class.php');
 
 
 echo 'Study3 <br>';
@@ -19,6 +20,9 @@ $logger = new Logger('minstagram_logger');
 $logger->pushHandler( $streamHandler );
 
 $logger->info('Study3 : applicatioin :');
+
+$writeService = new WriteFile();
+$writeService->find_all_files_and_write_info_to_a_file();
 
 
 echo '<br>'.'Study3 : End'.'<br>';
