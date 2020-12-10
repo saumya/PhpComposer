@@ -73,10 +73,10 @@ class WriteFile {
             }else{
                 echo 'XXX -' . $value . '<br>';
             }
-            
-        }
-        
+        }// foreach/
 
+        $this->getFileDetails( '/Users/saumya/Downloads' );
+        //$this->getFileDetails( '/' );
         echo '<br> find_all_files_and_write_info_to_a_file : wip <br>';
     }
 
@@ -91,6 +91,25 @@ class WriteFile {
             }
         }// for
         return $this->allPhotos;
+    }
+
+    private function getFileDetails($path)
+    {
+        echo '------------------ <br>';
+        echo 'path-'. $path . '<br>';
+        echo '------------------ <br>';
+
+        $files = scandir($path, 0);
+        foreach ($files as $key => $file) {
+            //echo 'key-' . $key . ' : file-' . $file . ' | ' . filesize( $path.'/'.$file ) / 1000 .'kb <br>';
+            $full_file_path = $path.'/'.$file;
+            if( is_dir($full_file_path) ){
+                echo 'Folder-' . $full_file_path . '<br>';
+            }else{
+                echo $file . '  ' . filesize( $path.'/'.$file ) / 1000 .'kb <br>';
+            }
+            
+        }
     }
 
     function __destruct(){
