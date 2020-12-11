@@ -104,9 +104,12 @@ class WriteFile {
             //echo 'key-' . $key . ' : file-' . $file . ' | ' . filesize( $path.'/'.$file ) / 1000 .'kb <br>';
             $full_file_path = $path.'/'.$file;
             if( is_dir($full_file_path) ){
-                echo 'Folder-' . $full_file_path . '<br>';
+                echo '<strong>Folder-</strong>' . $full_file_path . '<br>';
             }else{
-                echo $file . '  ' . filesize( $path.'/'.$file ) / 1000 .'kb <br>';
+                echo '';
+                echo $file . '  <strong>' . filesize( $path.'/'.$file ) / 1000 .'kb</strong> ';
+                echo ' ' . date ( "F d Y H:i:s.", filemtime( $path.'/'.$file ) );
+                echo '<br>';
             }
             
         }
