@@ -1,9 +1,11 @@
 <?php
 
-//require_once ('vendor/autoload.php');
+require_once ('vendor/autoload.php');
 
 //use Monolog\Logger;
 //use Monolog\Handler\StreamHandler;
+
+use ray\utils\RayFile;
 
 include_once('writefile.class.php');
 
@@ -23,8 +25,12 @@ $logger->pushHandler( $streamHandler );
 
 $logger->info('Study3 : applicatioin :');
 */
+/*
 $writeService = new WriteFile();
 $writeService->find_all_files_and_write_info_to_a_file();
+*/
 
+$rayFile = new RayFile('/');
+var_dump( $rayFile->getFiles() );
 
 echo '<br>'.'Study3 : End'.'<br>';
