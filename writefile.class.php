@@ -75,8 +75,12 @@ class WriteFile {
             }
         }// foreach/
 
-        $this->getFileDetails( '/Users/saumya/Downloads' );
+        //$this->getFileDetails( '/Users/saumya/Downloads' );
+        $this->getFileDetails( '/Users' );
         //$this->getFileDetails( '/' );
+        $this->getFileDetails( '/Users/Shared' );
+        $this->getFileDetails( '/Users/saumya' );
+        
         echo '<br> find_all_files_and_write_info_to_a_file : wip <br>';
     }
 
@@ -99,20 +103,25 @@ class WriteFile {
         echo 'path-'. $path . '<br>';
         echo '------------------ <br>';
 
+        echo '------------------------------------------------------ <br>';
+
         $files = scandir($path, 0);
         foreach ($files as $key => $file) {
             //echo 'key-' . $key . ' : file-' . $file . ' | ' . filesize( $path.'/'.$file ) / 1000 .'kb <br>';
             $full_file_path = $path.'/'.$file;
             if( is_dir($full_file_path) ){
-                echo '<strong>Folder-</strong>' . $full_file_path . '<br>';
+                echo '<strong>Folder-</strong>' . $full_file_path . ' ';
+                echo ' ' . date ( "Y F d H:i:s.", filemtime( $full_file_path ) ) . '<br>';
             }else{
                 echo '';
-                echo $file . '  <strong>' . filesize( $path.'/'.$file ) / 1000 .'kb</strong> ';
-                echo ' ' . date ( "F d Y H:i:s.", filemtime( $path.'/'.$file ) );
+                echo $file . '  <strong>' . filesize( $full_file_path ) / 1000 .'kb</strong> ';
+                echo ' ' . date ( "Y d H:i:s.", filemtime( $full_file_path ) );
                 echo '<br>';
             }
             
         }
+
+        echo '------------------------------------------------------ <br>';
     }
 
     function __destruct(){
