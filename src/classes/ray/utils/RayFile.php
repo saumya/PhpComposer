@@ -26,6 +26,20 @@ class RayFile
         return $this->aFolders;
     }
 
+    public function getFilesAsJSON()
+    {
+        //TODO: make it a JSON format
+        echo '------------------------------------------------------<br>';
+        echo 'Path=' . $this->path . '<br>';
+        $files = $this->getFiles();
+        foreach ($files as $key => $file) {
+            //var_dump($file);
+            echo $key . '- ' . $file['file'] . ' - '. $file['size'] . ' - ' . $file['time'];
+            echo '<br>';
+        }
+        echo '------------------------------------------------------<br>';
+    }
+
     private function getDetails($path)
     {
         $files = scandir($path, 0);
