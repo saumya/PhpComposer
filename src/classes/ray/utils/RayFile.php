@@ -50,6 +50,22 @@ class RayFile
         echo '}';
         //echo '<br>------------------------------------------------------<br>';
     }
+    public function getFoldersAsJSON()
+    {
+        $folders = $this->getFolders();
+        //var_dump($folders);
+        //TODO: Make it a JSON format
+        echo '{';
+        echo '"path": "'. $this->path . '",';
+        echo '"folders" : [';
+        foreach ($folders as $key => $folder) {
+            echo '{';
+            echo '"folder" : "' . $folder['folder'] . '",' ;
+            echo '},';
+        }
+        echo ']';
+        echo '}';
+    }
 
     private function getDetails($path)
     {
