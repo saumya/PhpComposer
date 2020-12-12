@@ -60,7 +60,7 @@ class RayFile
             if( is_dir($full_file_path) ){
                 //echo '<strong>Folder-</strong>' . $full_file_path . ' ';
                 //echo ' ' . date ( "Y F d H:i:s.", filemtime( $full_file_path ) ) . '<br>';
-                array_push( $this->aFolders, array('folder'=> $full_file_path, 'time'=>filemtime( $full_file_path )) );
+                array_push( $this->aFolders, array('folder'=> $full_file_path, 'time'=>date ("Y M D H:i:s", filemtime($full_file_path)) ) );
             }else{
                 //echo '';
                 //echo $file . '  <strong>' . filesize( $full_file_path ) / 1000 .'kb</strong> ';

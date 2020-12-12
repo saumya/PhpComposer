@@ -33,5 +33,9 @@ $writeService->find_all_files_and_write_info_to_a_file();
 $rayFile = new RayFile('/');
 //var_dump( $rayFile->getFiles() );
 $rayFile->getFilesAsJSON();
+//
+echo '<br>---------------------------<br>';
+var_dump( $rayFile->getFolders() );
+echo '<br>---------------------------<br>';
 
 echo '<br>'.'Study3 : End'.'<br>';
