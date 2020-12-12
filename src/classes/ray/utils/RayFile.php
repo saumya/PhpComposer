@@ -29,15 +29,26 @@ class RayFile
     public function getFilesAsJSON()
     {
         //TODO: make it a JSON format
-        echo '------------------------------------------------------<br>';
-        echo 'Path=' . $this->path . '<br>';
+        echo '<br>------------------------------------------------------<br>';
+        //echo 'Path=' . $this->path . '<br>';
         $files = $this->getFiles();
+        echo '{';
+        echo '"path" : "' . $this->path . '",';
+        echo '"files" : [';
         foreach ($files as $key => $file) {
             //var_dump($file);
-            echo $key . '- ' . $file['file'] . ' - '. $file['size'] . ' - ' . $file['time'];
+            //echo $key . '- ' . $file['file'] . ' - '. $file['size'] . ' - ' . $file['time'];
+            //echo $file['file'] . ' - '. $file['size'] . ' - ' . $file['time'];
+            echo '{';
+            echo '"file" : "' . $file['file'] . '",' ;
+            echo '"size" : ' . $file['size'] . ',' ;
+            echo '"time" : "' . $file['time'] . '"' ;
+            echo '},';
             echo '<br>';
         }
-        echo '------------------------------------------------------<br>';
+        echo ']';
+        echo '}';
+        echo '<br>------------------------------------------------------<br>';
     }
 
     private function getDetails($path)
