@@ -28,8 +28,7 @@ class RayFile
 
     public function getFilesAsJSON()
     {
-        //TODO: make it a JSON format
-        echo '<br>------------------------------------------------------<br>';
+        //echo '<br>------------------------------------------------------<br>';
         //echo 'Path=' . $this->path . '<br>';
         $files = $this->getFiles();
         echo '{';
@@ -42,13 +41,14 @@ class RayFile
             echo '{';
             echo '"file" : "' . $file['file'] . '",' ;
             echo '"size" : ' . $file['size'] . ',' ;
+            echo '"year" : ' . $file['year'] . ',' ;
             echo '"time" : "' . $file['time'] . '"' ;
             echo '},';
             echo '<br>';
         }
         echo ']';
         echo '}';
-        echo '<br>------------------------------------------------------<br>';
+        //echo '<br>------------------------------------------------------<br>';
     }
 
     private function getDetails($path)
@@ -56,7 +56,7 @@ class RayFile
         $files = scandir($path, 0);
         foreach ($files as $key => $file) {
             //echo 'key-' . $key . ' : file-' . $file . ' | ' . filesize( $path.'/'.$file ) / 1000 .'kb <br>';
-            $full_file_path = $path.'/'.$file;
+            $full_file_path = $path . '/' . $file;
             if( is_dir($full_file_path) ){
                 //echo '<strong>Folder-</strong>' . $full_file_path . ' ';
                 //echo ' ' . date ( "Y F d H:i:s.", filemtime( $full_file_path ) ) . '<br>';
@@ -66,7 +66,7 @@ class RayFile
                 //echo $file . '  <strong>' . filesize( $full_file_path ) / 1000 .'kb</strong> ';
                 //echo ' ' . date ( "Y d H:i:s.", filemtime( $full_file_path ) );
                 //echo '<br>';
-                array_push( $this->aFiles, array('file'=>$full_file_path, 'size'=>filesize( $full_file_path ), 'time'=>filemtime( $full_file_path ) ) );
+                array_push( $this->aFiles, array('file'=>$full_file_path, 'size'=>filesize( $full_file_path ), 'year'=>date ( "Y", filemtime( $full_file_path )), 'time'=>date ("Y M D H:i:s", filemtime($full_file_path)) ) );
             }
             
         }
