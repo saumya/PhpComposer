@@ -1,6 +1,8 @@
 PHP Application with Composer
 =============================
 
+Started as a study project.
+
 The `composer` is a PHP executable. All that is needed is a PHP executable to run `composer`.
 
 ```
