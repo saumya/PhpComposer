@@ -30,12 +30,17 @@ $writeService = new WriteFile();
 $writeService->find_all_files_and_write_info_to_a_file();
 */
 
-$rayFile = new RayFile('/');
+//$rayFile = new RayFile('/');
 //var_dump( $rayFile->getFiles() );
 //$rayFile->getFilesAsJSON();
 //
+$s_path = '/Users';
+echo 'Path -' . $s_path . '<br>';
+$rayFile = new RayFile( $s_path );
 echo '<br>---------------------------<br>';
 //var_dump( $rayFile->getFolders() );
+$rayFile->getFilesAsJSON();
+echo '<br>---------------------------<br>';
 $rayFile->getFoldersAsJSON();
 echo '<br>---------------------------<br>';
 
