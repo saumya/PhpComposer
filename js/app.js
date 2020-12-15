@@ -6,6 +6,7 @@ console.log('App : version 0.1.0');
 
   console.log('App : Entry');
 
+
   // Getting the images
   const getDataFromServer = ()=>{
     console.log('Get', new Date());
@@ -41,7 +42,12 @@ console.log('App : version 0.1.0');
           //console.log(item.file)
           const filePath = 'minstagram_uploads/' + item.file;
           //console.log(filePath);
+          htmlStr += '<div>';
           htmlStr += '<img src='+ filePath +' width="100%;"></img>';
+          htmlStr += '<div>';
+          htmlStr += '<button onclick="(function(e){ console.log(e.target) })(event)">Like</button>';
+          htmlStr += '</div>';
+          htmlStr += '</div>';
         })
         const divPhotosDisplayContainer = document.getElementById('div_view');
         divPhotosDisplayContainer.innerHTML = htmlStr;
@@ -56,6 +62,8 @@ console.log('App : version 0.1.0');
     event.preventDefault();
     getDataFromServer();
   });// Btn Click
+
+  
   
   // Auto load the data when the page has been loaded.
   getDataFromServer()
