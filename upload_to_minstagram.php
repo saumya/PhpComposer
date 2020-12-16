@@ -4,14 +4,15 @@
 
 	require_once('view.photos.php');
 	require_once('writefile.class.php');
-
+	/*
 	require_once ('vendor/autoload.php');
-
+	
 	use Monolog\Logger;
 	use Monolog\Handler\StreamHandler;
 	use Monolog\Formatter\LineFormatter;
-
+	
 	use minstagram\DBService;
+	*/
 
 
 
@@ -40,7 +41,7 @@
 
 	$logger->info('upload to minstagram');
 
-	$db_service = new DBService( $logger );
+	//$db_service = new DBService( $logger );
 
 	//
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -70,8 +71,10 @@
         			$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
         		}// if
 				if (empty($errors)) {
+					
 					// write to DB
-					$db_service->savePhoto( $file_name, file_get_contents( $file_tmp ) );
+					//$db_service->savePhoto( $file_name, file_get_contents( $file_tmp ) );
+					
 					// Move the file to desired location
 					$result = move_uploaded_file($file_tmp, $file);
 					array_push( $aResult, $result);

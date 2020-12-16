@@ -29,25 +29,29 @@ console.log('App : version 0.1.0');
       })
     });
     */
-    
+
     // directly load JSON instead of PHP
     const url_photos = 'minstagram_uploads/minstagram.json';
     fetch( url_photos, { method: 'GET' } ).then(result=>{
       //console.log( 'result', result );
+      
       result.json().then( data=>{
         //console.log( 'data', data );
+        
         //render
         let htmlStr = '';
         data.map(item=>{
+          
           //console.log(item.file)
           const filePath = 'minstagram_uploads/' + item.file;
           //console.log(filePath);
-          htmlStr += '<div>';
+          htmlStr += '<div class="box">';
           htmlStr += '<img src='+ filePath +' width="100%;"></img>';
           htmlStr += '<div>';
-          htmlStr += '<button onclick="(function(e){ console.log(e.target) })(event)">Like</button>';
+          htmlStr += '<button id="'+ item.file +'" class="button is-success" onclick="(function(e){ console.log(e.target.id); })(event)">Like</button>';
           htmlStr += '</div>';
           htmlStr += '</div>';
+
         })
         const divPhotosDisplayContainer = document.getElementById('div_view');
         divPhotosDisplayContainer.innerHTML = htmlStr;
@@ -63,9 +67,9 @@ console.log('App : version 0.1.0');
     getDataFromServer();
   });// Btn Click
 
-  
+
   
   // Auto load the data when the page has been loaded.
-  getDataFromServer()
+  getDataFromServer();
 
 })();// Self-Executing Function
