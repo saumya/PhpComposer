@@ -1,7 +1,8 @@
 PHP Application with Composer
 =============================
 
-Started as a study project.
+Started as a study project. 
+The basics are ready. Working on the database and researching which one to implement.
 
 The `composer` is a PHP executable. All that is needed is a PHP executable to run `composer`.
 
