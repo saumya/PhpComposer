@@ -2,9 +2,11 @@ PHP Application with Composer
 =============================
 
 Started as a study project. 
+
 The basics are ready. Working on the database and researching which one to implement.
 
-The `composer` is a PHP executable. All that is needed is a PHP executable to run `composer`.
+The `composer` is a PHP executable. 
+All that is needed is a PHP executable to run `composer`.
 
 ```
 sudo /Applications/MAMP/bin/php/php7.3.8/bin/php composer_2.0.7.phar --version
