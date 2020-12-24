@@ -2,8 +2,8 @@
 	// Setting the Server Time Zone
 	date_default_timezone_set('Asia/Kolkata');
 
-	require_once('view.photos.php');
-	require_once('writefile.class.php');
+	//require_once('view.photos.php');
+	//require_once('writefile.class.php');
 	/*
 	require_once ('vendor/autoload.php');
 	
@@ -14,12 +14,8 @@
 	use minstagram\DBService;
 	*/
 
-
-
-
-	
 	//print_r($_FILES);
-
+	/*
 	$log_file_name = 'my_monolog.log';
 	
 	
@@ -30,8 +26,9 @@
 	$output = "%datetime% > %level_name% > %message% %context% %extra%\n";
 	// finally, create a formatter
 	$formatter = new LineFormatter($output, $dateFormat);
-	
 
+	
+	// Logger
 	$streamHandler = new StreamHandler( $log_file_name, Logger::DEBUG);
 	$streamHandler->setFormatter($formatter);
 
@@ -40,6 +37,7 @@
 	
 
 	$logger->info('upload to minstagram');
+	*/
 
 	//$db_service = new DBService( $logger );
 
@@ -82,8 +80,11 @@
 
 			}// for
 
+			//echo json_encode($aResult);
+			
+
 			writeTheResultForFrontEnd($aResult); 
-			write_json_file();
+			//write_json_file();
 
 			if ($errors) print_r($errors);
 
