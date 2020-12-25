@@ -2,8 +2,9 @@
 	// Setting the Server Time Zone
 	date_default_timezone_set('Asia/Kolkata');
 
-	//require_once('view.photos.php');
-	//require_once('writefile.class.php');
+	require_once('view.photos.php');
+	require_once('writefile.class.php');
+	
 	/*
 	require_once ('vendor/autoload.php');
 	
@@ -82,9 +83,8 @@
 
 			//echo json_encode($aResult);
 			
-
 			writeTheResultForFrontEnd($aResult); 
-			//write_json_file();
+			write_json_file();
 
 			if ($errors) print_r($errors);
 
