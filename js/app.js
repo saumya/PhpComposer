@@ -48,7 +48,7 @@ console.log('App : version 0.1.0');
           htmlStr += '<div class="box">';
           htmlStr += '<img src='+ filePath +' width="100%;"></img>';
           htmlStr += '<div>';
-          htmlStr += '<button id="'+ item.file +'" class="button is-success" onclick="(function(e){ console.log(e.target.id); })(event)">Like</button>';
+          //htmlStr += '<button id="'+ item.file +'" class="button is-success" onclick="(function(e){ console.log(e.target.id); })(event)">Like</button>';
           htmlStr += '</div>';
           htmlStr += '</div>';
 
