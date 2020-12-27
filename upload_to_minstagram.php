@@ -5,17 +5,23 @@
 	require_once('view.photos.php');
 	require_once('writefile.class.php');
 	
-	/*
+	
 	require_once ('vendor/autoload.php');
 	
 	use Monolog\Logger;
 	use Monolog\Handler\StreamHandler;
-	use Monolog\Formatter\LineFormatter;
+	//use Monolog\Formatter\LineFormatter;
 	
-	use minstagram\DBService;
-	*/
+	//use minstagram\DBService;
+	
 
 	//print_r($_FILES);
+	$log_file_name = 'my_monolog.log';
+	$streamHandler = new StreamHandler( $log_file_name, Logger::DEBUG);
+	$logger = new Logger('MINSTAGRAM_LOGGER');
+	$logger->pushHandler( $streamHandler );
+	$logger->info('upload to minstagram');
+
 	/*
 	$log_file_name = 'my_monolog.log';
 	
@@ -73,8 +79,8 @@
 					
 					// write to DB
 					//$db_service->savePhoto( $file_name, file_get_contents( $file_tmp ) );
-					
-					save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
+					// sending Logger as first param
+					save_photo_in_db( $logger, $file_name, file_get_contents( $file_tmp ) );
 
 					// Move the file to desired location
 					$result = move_uploaded_file($file_tmp, $file);
@@ -116,14 +122,23 @@
 		$pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
 		return $pdo;
 	} 
-	function save_photo_in_db($f_name, $file_data_to_store){
-		
+	function save_photo_in_db($logger, $f_name, $file_data_to_store){
+		// TODO: Fix this
+		$logger->info('save_photo_in_db');
+
 		$pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
+		$logger->info( "$pdo" );
 		$sql = "INSERT INTO minstagram(photo_name, photo)" . "VALUES(:p_name, :p_data)";
 		$stmt = $pdo->prepare($sql);
-		//$stmt->bindParam(':p_name', $f_name);
-		//$stmt->bindParam(':p_data', $file_data_to_store, \PDO::PARAM_LOB);
-		//$stmt->execute();
+		try {
+			$stmt->bindParam(':p_name', $f_name);
+			$stmt->bindParam(':p_data', $file_data_to_store, \PDO::PARAM_LOB);
+			$stmt->execute();
+		} catch (PDOException $e) {
+			//echo $e->getMessage();
+			$logger->info( print ($e->getMessage()) );
+		}
+		
 		
 	}
 	// Database services/
