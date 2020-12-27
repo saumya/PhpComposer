@@ -74,6 +74,8 @@
 					// write to DB
 					//$db_service->savePhoto( $file_name, file_get_contents( $file_tmp ) );
 					
+					save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
+
 					// Move the file to desired location
 					$result = move_uploaded_file($file_tmp, $file);
 					array_push( $aResult, $result);
@@ -107,5 +109,23 @@
 		$writeFileObj = new WriteFile( $viewPhotos->getAllPhotos() );
 		$writeFileObj->writeToFile();
 	}
+
+	// Database services
+	$PATH_TO_SQLITE_FILE = 'phpsqlite.db';
+	function db_connect(){
+		$pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
+		return $pdo;
+	} 
+	function save_photo_in_db($f_name, $file_data_to_store){
+		
+		$pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
+		$sql = "INSERT INTO minstagram(photo_name, photo)" . "VALUES(:p_name, :p_data)";
+		$stmt = $pdo->prepare($sql);
+		//$stmt->bindParam(':p_name', $f_name);
+		//$stmt->bindParam(':p_data', $file_data_to_store, \PDO::PARAM_LOB);
+		//$stmt->execute();
+		
+	}
+	// Database services/
 
 ?>
