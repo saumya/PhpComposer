@@ -79,8 +79,11 @@
 					
 					// write to DB
 					//$db_service->savePhoto( $file_name, file_get_contents( $file_tmp ) );
+					
+					$logger->info('Upload in progress ...');
 					// sending Logger as first param
-					save_photo_in_db( $logger, $file_name, file_get_contents( $file_tmp ) );
+					//save_photo_in_db( $logger, $file_name, file_get_contents( $file_tmp ) );
+					save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
 
 					// Move the file to desired location
 					$result = move_uploaded_file($file_tmp, $file);
@@ -117,17 +120,14 @@
 	}
 
 	// Database services
-	$PATH_TO_SQLITE_FILE = 'phpsqlite.db';
+	//$PATH_TO_SQLITE_FILE = 'phpsqlite.db';
 	function db_connect(){
+		$PATH_TO_SQLITE_FILE = 'phpsqlite.db';
 		$pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
 		return $pdo;
 	} 
-	function save_photo_in_db($logger, $f_name, $file_data_to_store){
-		// TODO: Fix this
-		$logger->info('save_photo_in_db');
-
-		$pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
-		$logger->info( "$pdo" );
+	function save_photo_in_db($f_name, $file_data_to_store){
+		$pdo = db_connect();
 		$sql = "INSERT INTO minstagram(photo_name, photo)" . "VALUES(:p_name, :p_data)";
 		$stmt = $pdo->prepare($sql);
 		try {
@@ -135,8 +135,9 @@
 			$stmt->bindParam(':p_data', $file_data_to_store, \PDO::PARAM_LOB);
 			$stmt->execute();
 		} catch (PDOException $e) {
-			//echo $e->getMessage();
-			$logger->info( print ($e->getMessage()) );
+			echo $e->getMessage();
+			//$logger->info( 'ERROR : In Database Operation' );
+			//$logger->info( print ($e->getMessage()) );
 		}
 		
 		
