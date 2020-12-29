@@ -8,19 +8,21 @@
 	
 	require_once ('vendor/autoload.php');
 	
-	use Monolog\Logger;
-	use Monolog\Handler\StreamHandler;
+	//use Monolog\Logger;
+	//use Monolog\Handler\StreamHandler;
 	//use Monolog\Formatter\LineFormatter;
 	
 	//use minstagram\DBService;
 	
 
 	//print_r($_FILES);
+	/*
 	$log_file_name = 'my_monolog.log';
 	$streamHandler = new StreamHandler( $log_file_name, Logger::DEBUG);
 	$logger = new Logger('MINSTAGRAM_LOGGER');
 	$logger->pushHandler( $streamHandler );
 	$logger->info('upload to minstagram');
+	*/
 
 	/*
 	$log_file_name = 'my_monolog.log';
@@ -80,7 +82,7 @@
 					// write to DB
 					//$db_service->savePhoto( $file_name, file_get_contents( $file_tmp ) );
 					
-					$logger->info('Upload in progress ...');
+					//$logger->info('Upload in progress ...');
 					// sending Logger as first param
 					//save_photo_in_db( $logger, $file_name, file_get_contents( $file_tmp ) );
 					save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
