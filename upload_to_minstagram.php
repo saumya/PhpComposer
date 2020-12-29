@@ -64,6 +64,7 @@
 
 			for ($i = 0; $i < $all_files; $i++) {
 				$file_name = $_FILES['files']['name'][$i];
+				//$file_name = '1.jpg'; //renaming the Files
 				$file_tmp = $_FILES['files']['tmp_name'][$i];
 				$file_type = $_FILES['files']['type'][$i];
 				$file_size = $_FILES['files']['size'][$i];
