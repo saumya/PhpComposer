@@ -50,8 +50,9 @@
 
 	//$db_service = new DBService( $logger );
 
-	//
-	//$numFiles = getImageFolderDetails();
+	// Utilty test for the implementation
+	// $numFiles = getImageFolderDetails();
+	// write_json_file();
 	//
 	
 
