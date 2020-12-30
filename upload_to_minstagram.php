@@ -6,7 +6,7 @@
 	require_once('writefile.class.php');
 	
 	
-	require_once ('vendor/autoload.php');
+	//require_once ('vendor/autoload.php');
 	
 	//use Monolog\Logger;
 	//use Monolog\Handler\StreamHandler;
@@ -50,6 +50,16 @@
 
 	//$db_service = new DBService( $logger );
 
+	// Image files count
+	$files = scandir('minstagram_uploads/');
+	$files_only = array_diff( $files, array('..', '.', '.DS_Store', 'minstagram.json', 'minstagram.txt') );
+	$num_images_on_this_folder = count($files_only);
+	//print_r($files);
+	print('Total files='. $num_images_on_this_folder );
+	echo '<br>';
+	print_r($files_only);
+	//
+
 	//
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if (isset($_FILES['files'])) {
@@ -63,8 +73,11 @@
 			$aResult = array();
 
 			for ($i = 0; $i < $all_files; $i++) {
-				$file_name = $_FILES['files']['name'][$i];
+				
+				// Name the uploaded file
 				//$file_name = '1.jpg'; //renaming the Files
+
+				//$file_name = $_FILES['files']['name'][$i];
 				$file_tmp = $_FILES['files']['tmp_name'][$i];
 				$file_type = $_FILES['files']['type'][$i];
 				$file_size = $_FILES['files']['size'][$i];
