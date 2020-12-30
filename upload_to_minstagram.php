@@ -50,15 +50,10 @@
 
 	//$db_service = new DBService( $logger );
 
-	// Image files count
-	$files = scandir('minstagram_uploads/');
-	$files_only = array_diff( $files, array('..', '.', '.DS_Store', 'minstagram.json', 'minstagram.txt') );
-	$num_images_on_this_folder = count($files_only);
-	//print_r($files);
-	print('Total files='. $num_images_on_this_folder );
-	echo '<br>';
-	print_r($files_only);
 	//
+	//$numFiles = getImageFolderDetails();
+	//
+	
 
 	//
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -77,19 +72,20 @@
 				// Name the uploaded file
 				//$file_name = '1.jpg'; //renaming the Files
 
-				//$file_name = $_FILES['files']['name'][$i];
+				$file_name = $_FILES['files']['name'][$i];
 				$file_tmp = $_FILES['files']['tmp_name'][$i];
 				$file_type = $_FILES['files']['type'][$i];
 				$file_size = $_FILES['files']['size'][$i];
 				$file_ext = strtolower(end(explode('.', $_FILES['files']['name'][$i])));
 				
 				$file = $path . $file_name;
+				$file_name_in_server = $path . ( $numFiles = getImageFolderDetails()+1 ) . '.' . $file_ext;
 				
 				if (!in_array($file_ext, $extensions)) {
-					$errors[] = 'Extension not allowed: ' . $file_name . ' ' . $file_type;
+					$errors[] = 'Extension not allowed: FullName=' . $file_name . ' extension=' . $file_ext . ' type=' . $file_type;
 				}// if
 				if ($file_size > 2097152) {
-        			$errors[] = 'File size exceeds limit: ' . $file_name . ' ' . $file_type;
+        			$errors[] = 'File size exceeds limit: FullName=' . $file_name . ' extension=' . $file_ext . ' type=' . $file_type;
         		}// if
 				if (empty($errors)) {
 					
@@ -102,7 +98,8 @@
 					save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
 
 					// Move the file to desired location
-					$result = move_uploaded_file($file_tmp, $file);
+					//$result = move_uploaded_file($file_tmp, $file);
+					$result = move_uploaded_file($file_tmp, $file_name_in_server); // Renaming the uploaded file in server
 					array_push( $aResult, $result);
 				}// if
 
@@ -156,8 +153,22 @@
 			//$logger->info( print ($e->getMessage()) );
 		}
 		
-		
 	}
 	// Database services/
+
+	// Utility
+	function getImageFolderDetails(){
+		// Image files count
+		$files = scandir('minstagram_uploads/');
+		$files_only = array_diff( $files, array('..', '.', '.DS_Store', 'minstagram.json', 'minstagram.txt') );
+		$num_images_on_this_folder = count($files_only);
+		//print_r($files);
+		//print('Total files='. $num_images_on_this_folder );
+		//echo '<br>';
+		//print_r($files_only);
+		//
+		return $num_images_on_this_folder;
+	}
+	// Utility/
 
 ?>
