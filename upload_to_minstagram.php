@@ -44,7 +44,6 @@
 	$logger = new Logger('MINSTAGRAM_LOGGER');
 	$logger->pushHandler( $streamHandler );
 	
-
 	$logger->info('upload to minstagram');
 	*/
 
