@@ -10,13 +10,11 @@
     // 
     const updateDataForTheImage = function(){
         //console.log('updateDataForTheImage');
-        console.log( txtUpdate.value );
+        //console.log( txtUpdate.value );
         const url = 'update_info_in_db.php';
         const pData = {
             'name' : 'Saumya',
-            'title' : 'Image title',
-            'test1' : 245,
-            'test_test' : 'whtat 456 is!'
+            'title' : txtUpdate.value
         };
         //
         fetch( url,{
@@ -37,14 +35,11 @@
                const aa = JSON.parse( result );
                //console.log('aa', aa);
                console.log( aa.name );
+               console.log( aa.title );
                console.log('=========================');
                
             }).catch( error1=>console.log(error1) );
-            /*
-            response.json().then(result=>{
-               console.log('RESULT', result);
-            }).catch( error2=>console.log(error2)); 
-            */
+            
         }).catch( error1=>console.log(error1) );
         //
     } // updateDataForTheImage/
