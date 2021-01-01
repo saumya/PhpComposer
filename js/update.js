@@ -25,17 +25,18 @@
             },
             body: ( JSON.stringify(pData) )
         }).then( response=>{
-            console.log( 'status=', response.statusText );
-            console.log( response );
+            //console.log( 'status=', response.statusText );
+            //console.log( response );
            
             response.text().then(result=>{
                //console.log('RESULT : txt : ', result);
                console.log('=========================');
-               //console.log( 'test1=', result.test1 );
+               console.log( 'result=', result );
+               /*
                const aa = JSON.parse( result );
-               //console.log('aa', aa);
                console.log( aa.name );
                console.log( aa.title );
+               */
                console.log('=========================');
                
             }).catch( error1=>console.log(error1) );
