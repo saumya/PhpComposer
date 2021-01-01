@@ -8,15 +8,28 @@
 	
 	<title> MinstaGram </title>
 
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma-rtl.min.css">
+
+	<script defer src="js/upload.js"></script>
+
 </head>
 <body>
+	<div class="container">
+		<div class="box">
+			<form method="post" enctype="multipart/form-data">
+				<input class="input is-info" type="file" name="files[]" multiple /> <br /><br />
+				<input class="button is-warning" type="submit" value="Upload File" name="submit" />
+			</form>
+		</div>
+		<div class="box">
+			<input class="input" type="text" placeholder="Tell something about the image, that has been uploaded." /> <br/><br/>
+			<input class="button is-success" type="button" value="Update" />
+		</div>
+	</div>
+	
 
-	<form method="post" enctype="multipart/form-data">
-  		<input type="file" name="files[]" multiple />
-  		<input type="submit" value="Upload File" name="submit" />
-	</form>
 	<div id="id_result"></div>
 
-	<script src="js/upload.js"></script>
 </body>
 </html>
