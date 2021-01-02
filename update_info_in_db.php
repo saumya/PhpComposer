@@ -16,6 +16,10 @@ $app = (function(){
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ( isset($_POST) ){
             $get_ui_data();
+            // TODO:
+            // Get the files data from the folder
+            // Make a new Name and save it in DB
+            //
         }else{
             echo '{ "result" : "Nothing From FrontEnd" }';
         }
