@@ -1,7 +1,7 @@
 PHP Application with Composer
 =============================
 
-Started as a study project. 
+A photo sharing application. 
 
 The basics are ready. Working on the database and researching which one to implement.
 
