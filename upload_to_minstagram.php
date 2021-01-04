@@ -95,7 +95,8 @@
 					// sending Logger as first param
 					//save_photo_in_db( $logger, $file_name, file_get_contents( $file_tmp ) );
 					
-					//save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
+					// Database and putting the file in the database
+					save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
 
 					// Move the file to desired location
 					//$result = move_uploaded_file($file_tmp, $file);

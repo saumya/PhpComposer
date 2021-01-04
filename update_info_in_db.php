@@ -26,13 +26,13 @@ $app = (function(){
     // 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ( isset($_POST) ){
-            //$get_ui_data();
+            // Data from UI, the user typed title of the image
+            $get_ui_data();
             
-            // TODO:
-            // Get the files data from the folder
-            // Make a new Name and save it in DB
-            
+            // Get the files data from the folder & Make a new Name and save it in DB
             echo $create_file_name();
+
+            //
 
             //
         }else{
