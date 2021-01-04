@@ -30,7 +30,21 @@ $app = (function(){
 });
 
 // Execute the function
-$app();
+//$app();
 
+//
+$path = 'minstagram_uploads/';
+$extensions = ['jpg', 'jpeg', 'png', 'gif'];
+$xfiles = ['.', '..', '.DS_Store', 'minstagram.json','minstagram.txt'];
+//$all_files = count($_FILES['files']['tmp_name']);
+$all_files = scandir( $path );
+$all_image_files = array_diff($all_files,$xfiles);
+$num_image_files = count($all_image_files);
+$next_file_name = $num_image_files + 1;
 
+echo ( json_encode( $all_files ) );
+echo '<br>';
+print_r( $all_image_files );
+echo '<br>';
+echo( 'Next File Name =' . $next_file_name );
 
