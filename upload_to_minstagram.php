@@ -5,6 +5,7 @@
 	require_once('view.photos.php');
 	require_once('writefile.class.php');
 	
+	//$g_file_name = 'xxxxx';
 	
 	//require_once ('vendor/autoload.php');
 	
@@ -70,8 +71,6 @@
 			for ($i = 0; $i < $all_files; $i++) {
 				
 				// Name the uploaded file
-				//$file_name = '1.jpg'; //renaming the Files
-
 				$file_name = $_FILES['files']['name'][$i];
 				$file_tmp = $_FILES['files']['tmp_name'][$i];
 				$file_type = $_FILES['files']['type'][$i];
@@ -95,7 +94,8 @@
 					//$logger->info('Upload in progress ...');
 					// sending Logger as first param
 					//save_photo_in_db( $logger, $file_name, file_get_contents( $file_tmp ) );
-					save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
+					
+					//save_photo_in_db( $file_name, file_get_contents( $file_tmp ) );
 
 					// Move the file to desired location
 					//$result = move_uploaded_file($file_tmp, $file);
@@ -171,4 +171,3 @@
 	}
 	// Utility/
 
-?>
