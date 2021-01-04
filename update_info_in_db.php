@@ -31,8 +31,8 @@ $app = (function(){
             
             // Get the files data from the folder & Make a new Name and save it in DB
             echo $create_file_name();
-
             //
+            // TODO: Check the DB and get the last id from the table
 
             //
         }else{
