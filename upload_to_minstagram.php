@@ -155,6 +155,17 @@
 		}
 		
 	}
+	function get_last_id(){
+		// ref: https://www.php.net/manual/en/pdostatement.fetch.php
+		$pdo = db_connect();
+		$sql = "SELECT * FROM minstagram";
+		$result = $db->query( $sql );
+		//$datapie = array();
+		$result->setFetchMode(PDO::FETCH_ASSOC);
+		$data = json_encode( $result->fetchAll() );
+		//$data = json_encode($datapie);
+		return $data;
+	}
 	// Database services/
 
 	// Utility

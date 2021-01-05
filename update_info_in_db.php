@@ -12,6 +12,24 @@ $app = (function(){
         $obj = json_decode( $str_json );
         echo $obj->{'title'};
     };
+    // Database
+    $get_last_id = function(){
+        
+		// ref: https://www.php.net/manual/en/pdostatement.fetch.php
+		$PATH_TO_SQLITE_FILE = 'phpsqlite.db';
+        $pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
+        //
+		$sql = "SELECT * FROM minstagram";
+		$result = $db->query( $sql );
+		
+		//$result->setFetchMode(PDO::FETCH_ASSOC);
+		//$data = json_encode( $result->fetchAll() );
+		
+        //return $data;
+        
+        return 'get_last_id';
+	};
+    // Database/
     //
     $create_file_name = function(){
         $path = 'minstagram_uploads/';
@@ -33,7 +51,7 @@ $app = (function(){
             echo $create_file_name();
             //
             // TODO: Check the DB and get the last id from the table
-
+            echo $get_last_id();
             //
         }else{
             echo '{ "result" : "Nothing From FrontEnd" }';
@@ -46,7 +64,7 @@ $app = (function(){
 
 // =================================================
 // Execute the function
-$app();
+//$app();
 // =================================================
 
 //
@@ -68,5 +86,39 @@ echo( 'Next File Name =' . $next_file_name );
 
 //print_r( $GLOBALS['g_file_name'] );
 
+$get_last_id = function(){
+    // ref: https://www.php.net/manual/en/pdostatement.fetch.php
+    $PATH_TO_SQLITE_FILE = 'phpsqlite.db';
+    $pdo = new \PDO( "sqlite:" . $PATH_TO_SQLITE_FILE );
+    $sql = "SELECT * FROM minstagram";
+    $sth = $pdo->prepare( $sql );
+    $sth->execute();
+    //$result = $sth->fetchAll();
+    //$result = $sth->fetchAll( PDO::FETCH_ASSOC );
+    
+    //echo count($result);
+    //echo json_encode($result);
+    //print_r($result);
+    //
+    
+    $result = $sth->fetchAll();
+    for ($i = 0; $i < count($result); $i++)  {
+        //echo $result[$i] ."<br />";
+        /*
+        for($j = 0; $j< count($result[$i]); $j++) {
+            echo $result[$i][$j]."<br />";
+        }
+        */
+        $row = $result[$i];
+        //echo $row['id'] . ' | ' . $row['title'] . ' | ' . $row['photo_name'] . ' | ' . $row['photo'] .'<br/>';
+        echo $row['id'] . ' | title=' . $row['title'] . ' | name=' . $row['photo_name'] . '<br/>';
+    }
+    
+    //$result = $sth->fetchAll( PDO::FETCH_ASSOC );
+
+    //
+    //echo 'get_last_id';
+};
+$get_last_id();
 //
 
