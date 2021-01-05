@@ -50,10 +50,9 @@ $run_the_self_executing_application = (function(){
         //$sql = "SELECT * FROM minstagram";
         //$sql = "INSERT INTO minstagram (title) VALUES (:stringtitle)";
         $sql = "UPDATE minstagram SET title=:photo_title WHERE id=:photo_id";
-        $sth = $pdo->prepare( $sql );
-        $sth->execute($data);
-        return $pdo->lastInsertId();
-        
+        $update_statement = $pdo->prepare( $sql );
+        $update_statement->execute($data);
+        return $update_statement->rowCount();
     }; // $set_title_for_the_photo_with_id/
     
     // Database/
@@ -90,7 +89,12 @@ $run_the_self_executing_application = (function(){
             $photo_id = ($create_file_name()-1);
             $photo_title = $get_ui_data();
             $result = $set_title_for_the_photo_with_id($photo_id, $photo_title);
-            echo $result;
+            //echo $result;
+            if($result==0){
+                echo 'Title Update Failed!';
+            }else{
+                echo 'Title update Success.';
+            }
             //
         }else{
             echo '{ "result" : "Nothing From FrontEnd" }';
