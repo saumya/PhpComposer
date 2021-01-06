@@ -6,6 +6,7 @@
     
     const btnUpdate = document.getElementById('id_btn_update');
     const txtUpdate = document.getElementById('id_txt_update');
+    const btnRemake = document.getElementById('id_btn_remake_data');
     
     // 
     const updateDataForTheImage = function(){
@@ -52,6 +53,28 @@
       //console.log('btnUpdate : click');
       updateDataForTheImage()
     });// Btn Click/
+    //
+    btnRemake.addEventListener('click', event=>{
+        event.preventDefault();
+        console.log('btnRemake');
+        // TODO: 
+        // Rewrite the JSON file by getting data from the SQLite
+        //
+        const url = 'make_json_file_from_db.php';
+        const pData = {};
+        //fetch( url, {}).then().catch();
+        fetch( url, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: ( JSON.stringify(pData) )
+        }).then( response=>{
+            console.log('Done');
+        } ).catch( error1=> console.log(error1) );
+        //
+    });
     
     console.log('update.js :' + message);
 })('nice');
