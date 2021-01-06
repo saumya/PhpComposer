@@ -71,7 +71,8 @@
             },
             body: ( JSON.stringify(pData) )
         }).then( response=>{
-            console.log('Done');
+            //console.log('Done');
+            response.text().then( result=>console.log(result) ).catch( error2=>console.log(error2) );
         } ).catch( error1=> console.log(error1) );
         //
     });
