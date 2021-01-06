@@ -56,8 +56,7 @@
     //
     btnRemake.addEventListener('click', event=>{
         event.preventDefault();
-        console.log('btnRemake');
-        // TODO: 
+        //console.log('btnRemake');
         // Rewrite the JSON file by getting data from the SQLite
         //
         const url = 'make_json_file_from_db.php';
