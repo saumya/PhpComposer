@@ -1,9 +1,9 @@
 PHP Application with Composer
 =============================
 
-A photo sharing application. 
+A photo displaying application. Upload photos and give them a title/quote.
 
-The basics are ready. Working on the database and researching which one to implement.
+
 
 The `composer` is a PHP executable. 
 All that is needed is a PHP executable to run `composer`.
@@ -31,7 +31,7 @@ This is the final step to re-generate the Autoload scripts correctly.
 ### Done with
 
  - [composer][1] 
- - SQLite is tested
+ - SQLite 
 
 
 ### Thanks
